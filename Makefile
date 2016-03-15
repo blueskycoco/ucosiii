@@ -52,10 +52,12 @@ VPATH+=./Micrium/Software/EvalBoards/Micrium/uC-Eval-STM32F107/uCOS-III/TrueSTUD
 VPATH+=./Micrium/Software/EvalBoards/Micrium/uC-Eval-STM32F107/BSP/TrueSTUDIO
 VPATH+=./Micrium/Software/EvalBoards/Micrium/uC-Eval-STM32F107/BSP
 VPATH+=./Micrium/Software/uC-LIB
+VPATH+=./Micrium/Software/uC-LIB/Ports/ARM-Cortex-M3/GNU
 VPATH+=./Micrium/Software/uC-CPU
 VPATH+=./Micrium/Software/uCOS-III/Source
 VPATH+=./Micrium/Software/uC-CPU/ARM-Cortex-M3/GNU
 VPATH+=./Micrium/Software/uCOS-III/Ports/ARM-Cortex-M3/Generic/GNU
+VPATH+=./Micrium/Software/EvalBoards/Micrium/uC-Eval-STM32F107/BSP/ST/STM32/src
 #
 # The default rule, which causes the uart_echo example to be built.
 #
@@ -86,15 +88,18 @@ ${COMPILER}/uCosIII.axf: ${COMPILER}/cpu_a.o
 ${COMPILER}/uCosIII.axf: ${COMPILER}/app.o
 ${COMPILER}/uCosIII.axf: ${COMPILER}/os_app_hooks.o
 ${COMPILER}/uCosIII.axf: ${COMPILER}/bsp.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/_sbrk.o
 ${COMPILER}/uCosIII.axf: ${COMPILER}/bsp_i2c.o
 ${COMPILER}/uCosIII.axf: ${COMPILER}/bsp_int.o
 ${COMPILER}/uCosIII.axf: ${COMPILER}/bsp_ser.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/bsp_periph.o
 ${COMPILER}/uCosIII.axf: ${COMPILER}/bsp_stlm75.o
 ${COMPILER}/uCosIII.axf: ${COMPILER}/cstartup.o
 ${COMPILER}/uCosIII.axf: ${COMPILER}/cpu_core.o
 ${COMPILER}/uCosIII.axf: ${COMPILER}/lib_ascii.o
 ${COMPILER}/uCosIII.axf: ${COMPILER}/lib_math.o
 ${COMPILER}/uCosIII.axf: ${COMPILER}/lib_mem.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/lib_mem_a.o
 ${COMPILER}/uCosIII.axf: ${COMPILER}/lib_str.o
 ${COMPILER}/uCosIII.axf: ${COMPILER}/bsp_os.o
 ${COMPILER}/uCosIII.axf: ${COMPILER}/os_cfg_app.o
@@ -117,6 +122,30 @@ ${COMPILER}/uCosIII.axf: ${COMPILER}/os_tmr.o
 ${COMPILER}/uCosIII.axf: ${COMPILER}/os_var.o
 ${COMPILER}/uCosIII.axf: ${COMPILER}/cpu_c.o
 ${COMPILER}/uCosIII.axf: ${COMPILER}/os_cpu_c.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_wwdg.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_usart.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_tim.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_systick.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_spi.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_sdio.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_rtc.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_rcc.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_pwr.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_nvic.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_lib.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_iwdg.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_i2c.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_gpio.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_fsmc.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_flash.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_exti.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_dma.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_dbgmcu.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_dac.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_crc.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_can.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_bkp.o
+${COMPILER}/uCosIII.axf: ${COMPILER}/stm32f10x_adc.o
 ${COMPILER}/uCosIII.axf: stm32_flash.ld
 SCATTERgcc_uCosIII=stm32_flash.ld
 ENTRY_uCosIII=Reset_Handler
